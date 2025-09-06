@@ -12,11 +12,12 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI;
-app.use(cors({ origin: true }));
 app.use(cors({
-  origin: "https://student-grade.netlify.app", // your frontend URL
-  methods: ["GET", "POST", "PUT", "DELETE"]
+  origin: "https://student-grade.netlify.app",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true, // optional if you need cookies/auth
 }));
+
 app.use(express.json());
 const uploadsDir = path.join(__dirname, "uploads");
 if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir, { recursive: true });
