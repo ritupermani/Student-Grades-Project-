@@ -23,9 +23,6 @@ async function start() {
   try {
     await mongoose.connect(MONGO_URI);
     console.log("Connected to MongoDB");
-    app.get('/', (req, res) => {
-  res.send('Student Grades API is running');
-});
     app.listen(PORT, () => console.log("Server listening on", PORT));
   } catch (err) {
     console.error(err);
